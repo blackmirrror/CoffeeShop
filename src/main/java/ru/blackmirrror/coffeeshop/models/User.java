@@ -32,14 +32,14 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
-    mappedBy = "user")
-    private List<Product> products = new ArrayList<>();
-
-    public void addProductToUser(Product product) {
-        product.setUser(this);
-        products.add(product);
-    }
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
+//    mappedBy = "user")
+//    private List<Product> products = new ArrayList<>();
+//
+//    public void addProductToUser(Product product) {
+//        product.setUser(this);
+//        products.add(product);
+//    }
 
     public boolean isAdmin() {
         return roles.contains(Role.ROLE_ADMIN);
@@ -53,13 +53,13 @@ public class User implements UserDetails {
         this.avatar = avatar;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+//    public List<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(List<Product> products) {
+//        this.products = products;
+//    }
 
     public Long getId() {
         return id;

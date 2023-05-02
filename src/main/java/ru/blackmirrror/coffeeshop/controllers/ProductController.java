@@ -34,7 +34,7 @@ public class ProductController {
         model.addAttribute("user", productService.getUserByPrincipal(principal));
         model.addAttribute("product", product);
         model.addAttribute("images", product.getImages());
-        model.addAttribute("authorProduct", product.getUser());
+        //model.addAttribute("authorProduct", product.getUser());
         return "product-info";
     }
 

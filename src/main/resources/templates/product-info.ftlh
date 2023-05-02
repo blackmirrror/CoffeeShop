@@ -39,13 +39,13 @@
     <hr>
     <p><h1 style="text-align: center">${product.title} | ${product.price} ₽</h1></p>
     <p style="text-align: center">${product.description}</p>
-    <p style="text-align: center">Номер телефона продавца: <b>${authorProduct.phoneNumber}</b></p>
+<#--    <p style="text-align: center">Номер телефона продавца: <b>${authorProduct.phoneNumber}</b></p>-->
 
-    <hr>
-    <p style="text-align: center">
-        <a href="/user/${authorProduct.id}">
-            <img src="/static/images/avatar.png" alt="mdo" width="32" height="32" class="rounded-circle"> ${authorProduct.name}
-        </a>
-    </p>
+<#--    <hr>-->
+<#--    <p style="text-align: center">-->
+<#--        <a href="/user/${authorProduct.id}">-->
+<#--            <img src="/static/images/avatar.png" alt="mdo" width="32" height="32" class="rounded-circle"> ${authorProduct.name}-->
+<#--        </a>-->
+<#--    </p>-->
 
 </@t.template>
