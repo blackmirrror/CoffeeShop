@@ -24,13 +24,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="searchCity">Город</label>
-                <select id="searchCity" required name="city" class="form-control">
-                    <option value="">Город не выбран</option>
-
-                    <option value="Москва">Москва</option>
-                    <option value="Красноярск">Красноярск</option>
-                    <option value="Казань">Казань</option>
+                <label for="searchCategory">Категория</label>
+                <select id="searchCategory" required name="category" class="form-control">
+                    <option value="">Все</option>
+                    <option value="Кофе">Кофе</option>
+                    <option value="Другие напитки">Другие напитки</option>
+                    <option value="Здоровая еда">Здоровая еда</option>
+                    <option value="Сладкое и выпечка">Сладкое и выпечка</option>
 
                 </select>
             </div>
@@ -80,7 +80,7 @@
                         <p class="card-text">${product.price} ₽</p>
                     </div>
                     <div class="card-footer">
-                        ${product.city}
+                        ${product.category}
                     </div>
                 </div>
             </a>

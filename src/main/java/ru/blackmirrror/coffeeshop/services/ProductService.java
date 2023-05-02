@@ -22,12 +22,11 @@ public class ProductService {
     private final UserRepository userRepository;
 
     public List<Product> listProducts(String title) {
-        if (title != null) return productRepository.findByTitle(title);
+        if (title != null && !title.isEmpty()) return productRepository.findByTitle(title);
         return productRepository.findAll();
     }
 
     public void saveProduct(Principal principal, Product product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
-        //product.setUser(getUserByPrincipal(principal));
         Image image1;
         Image image2;
         Image image3;
@@ -69,12 +68,8 @@ public class ProductService {
         Product product = productRepository.findById(id)
                 .orElse(null);
         if (product != null) {
-            //if (product.getUser().getId().equals(user.getId())) {
-                productRepository.delete(product);
-                log.info("Product with id = {} was deleted", id);
-            //} else {
-            //    log.error("User: {} haven't this product with id = {}", user.getEmail(), id);
-            //}
+            productRepository.delete(product);
+            log.info("Product with id = {} was deleted", id);
         } else {
             log.error("Product with id = {} is not found", id);
         }    }
