@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -76,5 +77,14 @@ public class ProductService {
 
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
+    }
+
+    public List<String> getAllCategories() {
+        List<String> categories = new ArrayList<>();
+        categories.add("Кофе");
+        categories.add("Другие напитки");
+        categories.add("Здоровая еда");
+        categories.add("Сладкое и выпечка");
+        return categories;
     }
 }

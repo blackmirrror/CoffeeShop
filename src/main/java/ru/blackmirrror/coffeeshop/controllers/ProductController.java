@@ -25,6 +25,7 @@ public class ProductController {
         model.addAttribute("products", productService.listProducts(title));
         model.addAttribute("user", productService.getUserByPrincipal(principal));
         model.addAttribute("searchWord", title);
+        model.addAttribute("categories", productService.getAllCategories());
         return "products";
     }
 
@@ -34,7 +35,6 @@ public class ProductController {
         model.addAttribute("user", productService.getUserByPrincipal(principal));
         model.addAttribute("product", product);
         model.addAttribute("images", product.getImages());
-        //model.addAttribute("authorProduct", product.getUser());
         return "product-info";
     }
 
@@ -55,7 +55,7 @@ public class ProductController {
     public String userProducts(Principal principal, Model model) {
         User user = productService.getUserByPrincipal(principal);
         model.addAttribute("user", user);
-        //model.addAttribute("products", user.getProducts());
+        //model.addAttribute("weights", ProductWeight.values());
         model.addAttribute("products", productService.listProducts(null));
         return "my-products";
     }

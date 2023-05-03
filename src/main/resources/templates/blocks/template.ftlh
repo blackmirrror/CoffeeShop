@@ -20,19 +20,40 @@
             <a href="/">
                 <span class="navbar-brand mb-0 h1">Coffee Shop</span>
             </a>
-            <#if user.email??>
-                <div class="dropdown text-end">
+            <div class="dropdown text-end">
+                <a href="/">
+                    <span class="navbar-brand mb-0 h3">Меню</span>
+                </a>
+                <#if user.email??>
+                    <a href="/orders">
+                        <span class="navbar-brand mb-0 h3">Заказы</span>
+                    </a>
+                </#if>
+                <#if user.isAdmin()>
+                    <a href="/admin">
+                        <span class="navbar-brand mb-0 h1">Панель администратора</span>
+                    </a>
+                    <a href="/my/products">
+                        <span class="navbar-brand mb-0 h1">Продукты</span>
+                    </a>
+                </#if>
+                <#if user.isUser()>
+                    <a href="/card">
+                        <span class="navbar-brand mb-0 h1">Корзина</span>
+                    </a>
+                </#if>
+                <#if user.email??>
                     <a href="/profile">
                         <img src="/static/images/avatar.png" alt="mdo"
                              width="32" height="32" class="rounded-circle">
                     </a>
-                </div>
-            <#else>
-                <button class="btn btn-light my-2 my-sm-0" type="button"
-                        onclick="window.location.href = '/login'">
-                    Войти
-                </button>
-            </#if>
+                <#else>
+                    <button class="btn btn-light my-2 my-sm-0" type="button"
+                            onclick="window.location.href = '/login'">
+                        Войти
+                    </button>
+                </#if>
+            </div>
         </div>
     </nav>
     <div class="container mt-4">

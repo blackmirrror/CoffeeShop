@@ -34,6 +34,13 @@
 
                 </select>
             </div>
+<#--            <div class="form-group">-->
+<#--                <#list weights as w>-->
+<#--                    <div name="weights">-->
+<#--                        <label><input type="checkbox" name="${w}">${w}</label>-->
+<#--                    </div>-->
+<#--                </#list>-->
+<#--            </div>-->
             <div class="form-group">
                 <label for="description">Описание товара</label>
                 <textarea required class="form-control" id="description" name="description"></textarea>

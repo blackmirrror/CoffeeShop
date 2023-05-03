@@ -22,24 +22,29 @@
         </div>
     </form>
     <hr>
-    <div class="card-columns">
-        <#list products as product>
-            <a href="/product/${product.id}" class="product-link">
-                <div class="card text-white bg-dark my-3 product">
+    <#list categories as c>
+        <h3>${c}</h3><hr>
+        <div class="card-columns">
+            <#list products as product>
+                <#if product.category == c>
+                    <a href="/product/${product.id}" class="product-link">
+                        <div class="card text-white bg-dark my-3 product">
 
-                    <img src="/images/${product.previewImageId}"
-                         class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.title}</h5>
-                        <p class="card-text">${product.price} ₽</p>
-                    </div>
-                    <div class="card-footer">
-                        ${product.category}
-                    </div>
-                </div>
-            </a>
-        <#else>
-            <h1 style="text-align: center">Ничего не нашли</h1>
-        </#list>
-    </div>
+                            <img src="/images/${product.previewImageId}"
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.title}</h5>
+                                <p class="card-text">${product.price} ₽</p>
+                            </div>
+                            <div class="card-footer">
+                                ${product.category}
+                            </div>
+                        </div>
+                    </a>
+                </#if>
+            <#else>
+                <h1 style="text-align: center">Упс... Ничего нет</h1>
+            </#list>
+        </div>
+    </#list>
 </@t.template>

@@ -1,12 +1,10 @@
 package ru.blackmirrror.coffeeshop.models;
 
 import lombok.Data;
-import ru.blackmirrror.coffeeshop.models.enums.Product_category;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "products")
@@ -22,6 +20,12 @@ public class Product {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
     mappedBy = "product")
     private List<Image> images = new ArrayList<>();
+
+//    @ElementCollection(targetClass = ProductWeight.class, fetch = FetchType.EAGER)
+//    @CollectionTable(name = "product_weight",
+//            joinColumns = @JoinColumn(name = "product_id"))
+//    @Enumerated(EnumType.STRING)
+//    private Set<ProductWeight> weights = new HashSet<>();
 
 //    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 //    @JoinColumn
