@@ -38,7 +38,7 @@
                     </a>
                 </#if>
                 <#if user.isUser()>
-                    <a href="/card">
+                    <a href="/cart">
                         <span class="navbar-brand mb-0 h1">Корзина</span>
                     </a>
                 </#if>

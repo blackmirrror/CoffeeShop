@@ -1,6 +1,5 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
-<#--    <h1 style="text-align: center">Поиск товаров</h1><hr>-->
     <form method="get" action="/">
         <div class="form-row">
             <div class="form-group col-md-2">
@@ -27,11 +26,11 @@
         <div class="card-columns">
             <#list products as product>
                 <#if product.category == c>
-                    <a href="/product/${product.id}" class="product-link">
                         <div class="card text-white bg-dark my-3 product">
-
+                            <a href="/product/${product.id}">
                             <img src="/images/${product.previewImageId}"
                                  class="card-img-top">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title">${product.title}</h5>
                                 <p class="card-text">${product.price} ₽</p>
@@ -46,10 +45,15 @@
                                 </div>
                             </div>
                             <div class="card-footer" style="align-content: center">
-                                <button type="button" class="btn btn-success">В корзину</button>
+                                <form action="/cart/add" method="post">
+                                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                    <input type="hidden" name="productId" value="${product.id}">
+                                    <button type="submit" class="btn btn-success">
+                                        В корзину
+                                    </button>
+                                </form>
                             </div>
                         </div>
-                    </a>
                 </#if>
             <#else>
                 <h1 style="text-align: center">Упс... Ничего нет</h1>

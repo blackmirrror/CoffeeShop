@@ -66,7 +66,11 @@ public class UserService {
         return userRepository.findByEmail(principal.getName());
     }
 
-//    public void getUserById(long id) {
+    public User getUserById(Long id) {
+        return userRepository.getById(id);
+    }
+
+//    public void getUserByIdAdmin(long id) {
 //        Set<Role> set = new HashSet<>();
 //        set.add(Role.ROLE_ADMIN);
 //        User u = userRepository.getById(id);

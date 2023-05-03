@@ -56,7 +56,10 @@
         </div>
     </#if>
     <br>
-    <div style="text-align: center">
-        <button type="button" class="btn btn-success">В корзину</button>
-    </div>
+<form action="/cart/add" method="post" style="text-align: center">
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <input type="hidden" name="productId" value="${product.id}">
+    <button type="submit" class="btn btn-success">
+        В корзину
+    </button>
 </@t.template>

@@ -32,6 +32,11 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
+    @ElementCollection
+    @CollectionTable(name = "cart", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "product_id")
+    private List<Long> cart = new ArrayList<>();
+
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
 //    mappedBy = "user")
 //    private List<Product> products = new ArrayList<>();
@@ -63,6 +68,15 @@ public class User implements UserDetails {
 //    public void setProducts(List<Product> products) {
 //        this.products = products;
 //    }
+
+
+    public List<Long> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Long> cart) {
+        this.cart = cart;
+    }
 
     public Long getId() {
         return id;

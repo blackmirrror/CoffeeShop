@@ -83,6 +83,14 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
+    public List<Product> getProductsByIds(List<Long> ids) {
+        List<Product> productList = new ArrayList<>();
+        for (Long id : ids) {
+            productList.add(getProductById(id));
+        }
+        return productList;
+    }
+
     public List<String> getAllCategories() {
         List<String> categories = new ArrayList<>();
         categories.add("Кофе");

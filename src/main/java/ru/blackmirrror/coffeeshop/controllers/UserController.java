@@ -1,6 +1,8 @@
 package ru.blackmirrror.coffeeshop.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.blackmirrror.coffeeshop.models.User;
+import ru.blackmirrror.coffeeshop.services.CartService;
 import ru.blackmirrror.coffeeshop.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -19,7 +22,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(Principal principal, Model model) {
         model.addAttribute("user", userService.getUserByPrincipal(principal));
-        //userService.getUserById(3);
+        //userService.getUserByIdAdmin(3);
         return "login";
     }
 
