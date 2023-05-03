@@ -15,16 +15,6 @@
         Номер телефона: <b>${user.phoneNumber}</b>
         <br>
         <br>
-        <#if user.isAdmin()>
-            <a class="btn btn-dark mb-3" style="text-align: center; width: 100%"
-               href="/admin">
-                Панель администратора
-            </a><br>
-            <a class="btn btn-dark mb-3" style="text-align: center; width: 100%"
-               href="/my/products">
-                Продукты
-            </a>
-        </#if>
         <form action="/logout" method="post">
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <button type="submit" style="text-align: center; width: 100%" class="btn btn-danger mb-2">

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -27,7 +28,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void saveProduct(Principal principal, Product product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
+    public void saveProduct(Principal principal, Product product,
+                            MultipartFile file1, MultipartFile file2, MultipartFile file3,
+                            String[] weights) throws IOException {
         Image image1;
         Image image2;
         Image image3;
@@ -47,6 +50,7 @@ public class ProductService {
         log.info("Saving new Product. Title: {}", product.getTitle());
         Product productFromDb = productRepository.save(product);
         productFromDb.setPreviewImageId(productFromDb.getImages().get(0).getId());
+        product.setWeights(new HashSet<>(List.of(weights)));
         productRepository.save(product);
     }
 
@@ -86,5 +90,14 @@ public class ProductService {
         categories.add("Здоровая еда");
         categories.add("Сладкое и выпечка");
         return categories;
+    }
+
+    public List<String> getAllWeights() {
+        List<String> weights = new ArrayList<>();
+        weights.add("100 г/мл");
+        weights.add("200 г/мл");
+        weights.add("300 г/мл");
+        weights.add("400 г/мл");
+        return weights;
     }
 }

@@ -35,9 +35,18 @@
                             <div class="card-body">
                                 <h5 class="card-title">${product.title}</h5>
                                 <p class="card-text">${product.price} ₽</p>
+                                <div style="width: fit-content" class="mx-auto">
+                                    <div class="btn-group btn-group-toggle ml-10" data-toggle="buttons">
+                                        <#list product.weights as w>
+                                            <label class="btn btn-secondary">
+                                                <input type="radio" name="options" id="option1" autocomplete="off">${w}
+                                            </label>
+                                        </#list>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                ${product.category}
+                            <div class="card-footer" style="align-content: center">
+                                <button type="button" class="btn btn-success">В корзину</button>
                             </div>
                         </div>
                     </a>

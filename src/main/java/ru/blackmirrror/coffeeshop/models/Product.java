@@ -17,15 +17,15 @@ public class Product {
     private String description;
     private Integer price;
     private String category;
+    private String kal;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
     mappedBy = "product")
     private List<Image> images = new ArrayList<>();
 
-//    @ElementCollection(targetClass = ProductWeight.class, fetch = FetchType.EAGER)
-//    @CollectionTable(name = "product_weight",
-//            joinColumns = @JoinColumn(name = "product_id"))
-//    @Enumerated(EnumType.STRING)
-//    private Set<ProductWeight> weights = new HashSet<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "product_weight",
+            joinColumns = @JoinColumn(name = "product_id"))
+    private Set<String> weights = new HashSet<>();
 
 //    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 //    @JoinColumn

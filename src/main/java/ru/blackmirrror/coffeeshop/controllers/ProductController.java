@@ -40,8 +40,9 @@ public class ProductController {
 
     @PostMapping("/product/create")
     public String createProduct(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
-                                @RequestParam("file3") MultipartFile file3, Product product, Principal principal) throws IOException {
-        productService.saveProduct(principal, product, file1, file2, file3);
+                                @RequestParam("file3") MultipartFile file3, @RequestParam("String[]") String[] weights,
+                                Product product, Principal principal) throws IOException {
+        productService.saveProduct(principal, product, file1, file2, file3, weights);
         return "redirect:/my/products";
     }
 
@@ -55,7 +56,7 @@ public class ProductController {
     public String userProducts(Principal principal, Model model) {
         User user = productService.getUserByPrincipal(principal);
         model.addAttribute("user", user);
-        //model.addAttribute("weights", ProductWeight.values());
+        model.addAttribute("weights", productService.getAllWeights());
         model.addAttribute("products", productService.listProducts(null));
         return "my-products";
     }
