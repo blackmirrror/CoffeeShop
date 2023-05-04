@@ -1,5 +1,6 @@
 package ru.blackmirrror.coffeeshop.models;
 
+import org.hibernate.annotations.Columns;
 import ru.blackmirrror.coffeeshop.models.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
