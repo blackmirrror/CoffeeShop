@@ -31,28 +31,30 @@
                             <img src="/images/${product.previewImageId}"
                                  class="card-img-top">
                             </a>
+                            <form action="/cart/add" method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                 <h5 class="card-title">${product.title}</h5>
                                 <p class="card-text">${product.price} ₽</p>
-                                <div style="width: fit-content" class="mx-auto">
+                                <div style="width: fit-content; margin-bottom: 20px" class="mx-auto">
                                     <div class="btn-group btn-group-toggle ml-10" data-toggle="buttons">
                                         <#list product.weights as w>
                                             <label class="btn btn-secondary">
-                                                <input type="radio" name="options" id="option1" autocomplete="off">${w}
+                                                <input type="radio" required name="weight" autocomplete="off" value="${w}">${w}
                                             </label>
                                         </#list>
                                     </div>
                                 </div>
+                                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                <input type="hidden" name="productId" value="${product.id}">
+                                <input type="hidden" name="count" value="1"/>
+                                <#if user.email??>
+                                    <input type="hidden" required name="userId" value="${user.id}"/>
+                                </#if>
+                                <button type="submit" class="btn btn-success">
+                                    В корзину
+                                </button>
                             </div>
-                            <div class="card-footer" style="align-content: center">
-                                <form action="/cart/add" method="post">
-                                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                                    <input type="hidden" name="productId" value="${product.id}">
-                                    <button type="submit" class="btn btn-success">
-                                        В корзину
-                                    </button>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                 </#if>
             <#else>

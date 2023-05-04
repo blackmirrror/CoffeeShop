@@ -10,18 +10,18 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h2 class="fw-normal mb-0 text-white">Что-нибудь ещё?</h2>
                     </div>
-                    <#list products as product>
+                    <#list carts as cart>
                         <div class="card rounded-3 mb-4">
                             <div class="card-body p-4">
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
                                         <img
-                                                src="/images/${product.previewImageId}"
+                                                src="/images/${cart.product.previewImageId}"
                                                 class="img-fluid rounded-3" alt="Упс">
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2">${product.title}</p>
-                                        <p><span class="text-muted">Вес/объем: </span>${product.id}</p>
+                                        <p class="lead fw-normal mb-2">${cart.product.title}</p>
+                                        <p><span class="text-muted">Вес/объем: </span>${cart.weight}</p>
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                         <button class="btn btn-link px-2"
@@ -29,7 +29,7 @@
                                             <i class="fas fa-minus"></i>
                                         </button>
 
-                                        <input id="form1" min="1" name="quantity" value="1" type="number"
+                                        <input id="form1" min="1" name="quantity" value="${cart.count}" type="number"
                                                class="form-control form-control-sm" />
 
                                         <button class="btn btn-link px-2"
@@ -38,12 +38,12 @@
                                         </button>
                                     </div>
                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                        <h5 class="mb-0">${product.price}</h5>
+                                        <h5 class="mb-0">${cart.product.price} ₽</h5>
                                     </div>
                                     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                         <form action="/cart/remove" method="post">
                                             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                                            <input type="hidden" name="productId" value="${product.id}">
+                                            <input type="hidden" name="productId" value="${cart.product.id}">
                                             <button type="submit" style="border: none; background: transparent; color: brown" >
                                                 <i class="fas fa-trash fa-lg"></i>
                                             </button>

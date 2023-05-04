@@ -44,22 +44,25 @@
     <p><h2 style="text-align: center">${product.price} ₽</h2></p>
     <p style="text-align: center">${product.description}</p>
     <p style="text-align: center">${product.kal}</p>
-    <#if product.weights??>
-        <div style="width: fit-content" class="mx-auto">
+    <form action="/cart/add" method="post" style="text-align: center">
+    <div style="width: fit-content" class="mx-auto">
             <div class="btn-group btn-group-toggle ml-10" style="text-align: center" data-toggle="buttons">
                 <#list product.weights as w>
                     <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option1" autocomplete="off">${w}
+                        <input type="radio" required name="weight" autocomplete="off" value="${w}">${w}
                     </label>
                 </#list>
             </div>
         </div>
-    </#if>
     <br>
-<form action="/cart/add" method="post" style="text-align: center">
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <input type="hidden" name="productId" value="${product.id}">
+        <#if user.email??>
+            <input type="hidden" required name="userId" value="${user.id}"/>
+        </#if>
+    <input type="hidden" name="count" value="1"/>
     <button type="submit" class="btn btn-success">
         В корзину
     </button>
+</form>
 </@t.template>

@@ -1,5 +1,6 @@
 package ru.blackmirrror.coffeeshop.services;
 
+import ru.blackmirrror.coffeeshop.models.Cart;
 import ru.blackmirrror.coffeeshop.models.Image;
 import ru.blackmirrror.coffeeshop.models.Product;
 import ru.blackmirrror.coffeeshop.models.User;
@@ -81,14 +82,6 @@ public class ProductService {
 
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
-    }
-
-    public List<Product> getProductsByIds(List<Long> ids) {
-        List<Product> productList = new ArrayList<>();
-        for (Long id : ids) {
-            productList.add(getProductById(id));
-        }
-        return productList;
     }
 
     public List<String> getAllCategories() {

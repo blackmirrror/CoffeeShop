@@ -33,19 +33,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
-    @ElementCollection
-    @CollectionTable(name = "cart", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "product_id")
-    private List<Long> cart = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Cart> cart = new ArrayList<>();
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
-//    mappedBy = "user")
-//    private List<Product> products = new ArrayList<>();
-//
-//    public void addProductToUser(Product product) {
-//        product.setUser(this);
-//        products.add(product);
-//    }
 
     public boolean isAdmin() {
         return roles.contains(Role.ROLE_ADMIN);
@@ -62,20 +52,11 @@ public class User implements UserDetails {
         this.avatar = avatar;
     }
 
-//    public List<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<Product> products) {
-//        this.products = products;
-//    }
-
-
-    public List<Long> getCart() {
+    public List<Cart> getCart() {
         return cart;
     }
 
-    public void setCart(List<Long> cart) {
+    public void setCart(List<Cart> cart) {
         this.cart = cart;
     }
 
