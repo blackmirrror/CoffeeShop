@@ -1,6 +1,6 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
-    <h1 style="text-align: center">Корзина</h1>
+    <h2 style="text-align: center">Корзина</h2>
     <hr>
     <br>
     <section class="h-100 bg-dark">
@@ -8,7 +8,7 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-10">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2 class="fw-normal mb-0 text-white">Что-нибудь ещё?</h2>
+                        <h3 class="fw-normal mb-0 text-white">Что-нибудь ещё?</h3>
                     </div>
                     <#list carts as cart>
                         <#if cart.active == true>

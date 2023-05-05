@@ -21,6 +21,8 @@ public class Order {
     private List<Cart> cartItems = new ArrayList<>();
 
     private Long userId;
+    private String name;
+    private String phoneNumber;
 
     private String address;
     private LocalDate dateOfCreated;
@@ -28,5 +30,4 @@ public class Order {
 
     @PrePersist
     private void onCreate() { dateOfCreated = LocalDate.now(); }
-
 }

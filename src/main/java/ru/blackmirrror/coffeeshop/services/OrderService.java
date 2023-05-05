@@ -26,6 +26,8 @@ public class OrderService {
         Order order = new Order();
         order.setAddress(address);
         order.setUserId(user.getId());
+        order.setName(user.getName());
+        order.setPhoneNumber(user.getPhoneNumber());
         order.setStatus(0);
         List<Cart> cartItems = new ArrayList<>();
         for (Cart cart : user.getCart()) {
