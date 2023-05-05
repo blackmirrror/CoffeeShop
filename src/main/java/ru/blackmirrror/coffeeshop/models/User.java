@@ -36,7 +36,6 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Cart> cart = new ArrayList<>();
 
-
     public boolean isAdmin() {
         return roles.contains(Role.ROLE_ADMIN);
     }

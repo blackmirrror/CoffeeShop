@@ -11,6 +11,7 @@
                         <h2 class="fw-normal mb-0 text-white">Что-нибудь ещё?</h2>
                     </div>
                     <#list carts as cart>
+                        <#if cart.active == true>
                         <div class="card rounded-3 mb-4">
                             <div class="card-body p-4">
                                 <div class="row d-flex justify-content-between align-items-center">
@@ -52,6 +53,7 @@
                                 </div>
                             </div>
                         </div>
+                        </#if>
                     </#list>
                     <form action="/order/create" method="post">
                     <section class="pb-5 bg-dark">
@@ -94,7 +96,9 @@
                                             <h6>Доставка</h6>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="formControlLgXsd" class="form-control form-control-lg"/>
+                                            <input type="text" id="formControlLgXsd"
+                                                   class="form-control form-control-lg"
+                                                   required name="address"/>
                                             <label class="form-label" for="formControlLgXsd">Адрес</label>
                                         </div>
                                     </div>
@@ -104,7 +108,6 @@
                     </section>
                     <div class="card bg-dark">
                         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                        <input type="hidden" name="productId" value="${product.id}">
                         <button type="submit" class="btn btn-success btn-block btn-lg">
                             Сделать заказ
                         </button>

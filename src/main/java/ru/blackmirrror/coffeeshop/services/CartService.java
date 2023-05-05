@@ -46,6 +46,7 @@ public class CartService {
         cart.setProduct(productRepository.getById(pId));
         cart.setCount(count);
         cart.setWeight(weight);
+        cart.setActive(true);
         cartRepository.save(cart);
         return cart;
     }

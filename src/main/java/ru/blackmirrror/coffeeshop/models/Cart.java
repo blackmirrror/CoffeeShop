@@ -20,4 +20,10 @@ public class Cart {
     private Product product;
     private int count;
     private String weight;
+
+    private boolean active;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }
